@@ -1,0 +1,3 @@
+post http://localhost:4000/api/post?order=vivek&orderby=date HTTP/1.1
+content-type: application/json
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmY2NjliYmEwMTJjZjAyYzQ4NTY3MzUiLCJpYXQiOjE2MDk5ODQ0Nzl9.M5znzRnBaqOpd0jySILXeiUmjZHKvJ93PHxVjG3xG7E

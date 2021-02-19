@@ -1,0 +1,135 @@
+:root {
+  --backgroundColor: #fff;
+  --color-text-1: #000;
+  --color-text-2: #ff5722;
+  --color-text-3: #4caf50;
+}
+
+body {
+  background-color: var(--backgroundColor);
+}
+
+input {
+  outline: none;
+}
+
+/* Scroll 4 */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #1266f1;
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .3) 20%, transparent 20%, transparent 40%, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, .3) 60%, transparent 60%, transparent 80%, rgba(255, 255, 255, 0.3) 80%);
+  border-radius: 10px;
+}
+
+.navbar-nav .nav-link {
+  color: hsl(0deg 0% 1%);
+  font-weight: 100;
+  font-size: smaller;
+}
+
+.header-left .instrument-widget .last-price {
+  color: var(--color-text-2);
+}
+
+.header-right {
+  border-color: #e8e8e8!important;
+}
+
+.pinned-instruments .instrument-widget {
+  font-size: smaller;
+  font-weight: 500;
+}
+
+/* Market Watch Sidebar */
+li.list-group-item:nth-child(n+2) {
+  font-size: small;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+
+/* Test Css */
+
+
+/* MarketWatch Css codes */
+.marketWatch li.list-group-item:last-child{
+  border-bottom: 1px solid rgba(0,0,0,.125)!important;
+}
+.list-group-flush:first-child .list-group-item:first-child{
+  border-top: 1px solid rgba(0,0,0,.125);
+}
+.marketWatch ul li span.badge{
+  bottom: 0px;
+  cursor: pointer;
+  height: 27px;
+  left: 0px;
+  letter-spacing: 0.5px;
+  min-width: 35px;
+  position: relative;
+  right: 0px;
+  text-decoration: none solid rgb(255, 255, 255);
+  text-size-adjust: 100%;
+  top: 0px;
+  width: 35px;
+  column-rule-color: rgb(255, 255, 255);
+  perspective-origin: 17.5px 13.5px;
+  transform-origin: 17.5px 13.5px;
+  user-select: none;
+  caret-color: rgb(255, 255, 255);
+  /* background: rgb(255, 87, 34) none repeat scroll 0% 0% / auto padding-box border-box; */
+  
+  border-radius: 2px 2px 2px 2px;
+  font: normal normal 600 normal 11px / 17.6px "Open Sans", sans-serif;
+  margin: 0px 0px 0px 3px;
+  outline: rgb(255, 255, 255) none 0px;
+  padding: 4px 10px;
+}
+/* .buyStyle{
+
+} */
+/* .sellStyle{
+  background: rgb(255, 87, 34) none repeat scroll 0% 0% / auto padding-box border-box;
+  border: 1px solid rgb(255, 87, 34);
+} */
+.white-skin input[type=checkbox]:checked+label:before{
+  border: none!important;
+}
+.hGray{
+  color: #212121!important;
+  background-color: #fff !important;
+}
+.hGray:hover{
+  background-color: #9b9b9b!important;
+  color: #fff!important;
+}
+.mrtSearch input:focus{
+  box-shadow: none!important;
+}
+ul .actionBtn{
+  position: absolute;
+  right: 10px;
+}
+.marketWatch li.list-group-item:nth-of-type(n+2){
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.mrtSearch i.fa-search{
+  color: #bfbfbf!important;
+}
+.symSearchRes .badge{
+  padding: .9em 1.5em;
+  cursor: pointer;
+}
+.symSearchRes .actionBtn{
+  bottom: 8px;
+}
