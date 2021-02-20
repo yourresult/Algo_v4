@@ -17,29 +17,28 @@ const style = {
 var component = {
     /**
      * ? Instruments Action Button
+     * ? if Mouse hove on marketwatch instrument then append action Button
      */
-    iActionBtn: function (d, active) {
-        console.log(d);
+    iActionBtn: function (d, value = []) {
         var id;
-        !d ? id = null : id = d._targetInst.alternate.key
-        console.warn(id);
+        !d ? id = null : id = parseInt(d.target.getAttribute("index"))
         return {
             id: id,
-            value: active
+            value: value
         }
     }
 }
-const Home = (props) => {
+const MarketWatch = (props) => {
     const [list, createList] = useState({
         id: null,
         value: props.data.symbol
     })
-    var instruments = props.data.symbol.map((val, ind) => {
+    var instruments = list.value.map((val, ind) => {
         var actionBtn = <span className="actionBtn"><span className="badge badge-primary text-white ml-auto buyAct">B</span> <span className="badge ml-2 text-white deep-orange color-white sellAct">S</span> <span className="badge ml-2 hGray"><i className="fas fa-chart-line" /></span> <span className="badge ml-2 hGray" id="scriptTrash"><i className="far fa-trash-alt" /></span> <span className="badge ml-2 hGray"><i className="fas fa-ellipsis-h" /></span></span>
         return (
             <Draggable key={'id_' + ind} draggableId={'id_' + ind} index={ind}>
                 {(provided) => (
-                    <li className="list-group-item" onMouseEnter={(dat) => createList(component.iActionBtn(dat, props.data.symbol))} onMouseLeave={(dat) => createList(component.iActionBtn(null, props.data.symbol))} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                    <li className="list-group-item" index={ind} onMouseEnter={(dat) => createList(component.iActionBtn(dat, list.value))} onMouseLeave={(dat) => createList(component.iActionBtn(null, list.value))} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                         {val}
                         {ind == list.id ? actionBtn : ''}
                     </li>
@@ -47,11 +46,20 @@ const Home = (props) => {
             </Draggable>
         )
     })
-    function handleOnDragEnd(result) {
-        console.log(result);
-    }
+    var reorder = action => {
+        var startIndex, endIndex;
+        startIndex = action.source.index;
+        endIndex = action.destination.index;
+        var result = Array.from(list.value);
+        var [removed] = result.splice(startIndex, 1);
+        result.splice(endIndex, 0, removed);
+        createList({
+            id: null,
+            value: result
+        })
+    };
     return (
-        <DragDropContext>
+        <DragDropContext onDragEnd={reorder}>
             <Droppable droppableId="stock">
                 {(provided) => (
                     <ul className="list-group list-group-flush" {...provided.droppableProps} ref={provided.innerRef}>
@@ -68,4 +76,4 @@ const Home = (props) => {
     );
 
 };
-export default Home;
+export default MarketWatch;

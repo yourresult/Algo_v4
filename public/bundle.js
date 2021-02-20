@@ -52762,19 +52762,20 @@ var style = {
 var component = {
     /**
      * ? Instruments Action Button
+     * ? if Mouse hove on marketwatch instrument then append action Button
      */
-    iActionBtn: function iActionBtn(d, active) {
-        console.log(d);
+    iActionBtn: function iActionBtn(d) {
+        var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
         var id;
-        !d ? id = null : id = d._targetInst.alternate.key;
-        console.warn(id);
+        !d ? id = null : id = parseInt(d.target.getAttribute("index"));
         return {
             id: id,
-            value: active
+            value: value
         };
     }
 };
-var Home = function Home(props) {
+var MarketWatch = function MarketWatch(props) {
     var _useState = (0, _react.useState)({
         id: null,
         value: props.data.symbol
@@ -52783,7 +52784,7 @@ var Home = function Home(props) {
         list = _useState2[0],
         createList = _useState2[1];
 
-    var instruments = props.data.symbol.map(function (val, ind) {
+    var instruments = list.value.map(function (val, ind) {
         var actionBtn = _react2.default.createElement(
             'span',
             { className: 'actionBtn' },
@@ -52823,10 +52824,10 @@ var Home = function Home(props) {
             function (provided) {
                 return _react2.default.createElement(
                     'li',
-                    _extends({ className: 'list-group-item', onMouseEnter: function onMouseEnter(dat) {
-                            return createList(component.iActionBtn(dat, props.data.symbol));
+                    _extends({ className: 'list-group-item', index: ind, onMouseEnter: function onMouseEnter(dat) {
+                            return createList(component.iActionBtn(dat, list.value));
                         }, onMouseLeave: function onMouseLeave(dat) {
-                            return createList(component.iActionBtn(null, props.data.symbol));
+                            return createList(component.iActionBtn(null, list.value));
                         } }, provided.draggableProps, provided.dragHandleProps, { ref: provided.innerRef }),
                     val,
                     ind == list.id ? actionBtn : ''
@@ -52834,12 +52835,25 @@ var Home = function Home(props) {
             }
         );
     });
-    function handleOnDragEnd(result) {
-        console.log(result);
-    }
+    var reorder = function reorder(action) {
+        var startIndex, endIndex;
+        startIndex = action.source.index;
+        endIndex = action.destination.index;
+        var result = Array.from(list.value);
+
+        var _result$splice = result.splice(startIndex, 1),
+            _result$splice2 = _slicedToArray(_result$splice, 1),
+            removed = _result$splice2[0];
+
+        result.splice(endIndex, 0, removed);
+        createList({
+            id: null,
+            value: result
+        });
+    };
     return _react2.default.createElement(
         _reactBeautifulDnd.DragDropContext,
-        null,
+        { onDragEnd: reorder },
         _react2.default.createElement(
             _reactBeautifulDnd.Droppable,
             { droppableId: 'stock' },
@@ -52862,7 +52876,7 @@ var Home = function Home(props) {
         )
     );
 };
-exports.default = Home;
+exports.default = MarketWatch;
 
 /***/ }),
 /* 486 */
