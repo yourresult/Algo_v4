@@ -2,7 +2,23 @@
   --backgroundColor: #fff;
   --color-text-1: #000;
   --color-text-2: #ff5722;
-  --color-text-3: #4caf50;
+  --color-text-3: #5c855e;
+  --color-blue: 65, 132, 243;
+  --color-default: 79 79 79;
+  --color-green: 76, 175, 80;
+  /* Green Color */
+  --color-red: 223, 81, 76;
+  /* Red color */
+  --color-orange: 255, 87, 34;
+  /* Orange color */
+  --color-aqua: 0, 176, 255;
+  /* Aqua color */
+  --color-amber: 255, 143, 0;
+  /* Amber color */
+  --color-rose: 236, 64, 122;
+  /* Rose color */
+  --color-teal: 0, 150, 136;
+  /* Teal color */
 }
 
 body {
@@ -51,24 +67,26 @@ input {
 }
 
 /* Market Watch Sidebar */
+
 li.list-group-item:nth-child(n+2) {
   font-size: small;
   padding-top: 12px;
   padding-bottom: 12px;
 }
 
-
 /* Test Css */
 
-
 /* MarketWatch Css codes */
-.marketWatch li.list-group-item:last-child{
-  border-bottom: 1px solid rgba(0,0,0,.125)!important;
+
+.marketWatch li.list-group-item:last-child {
+  border-bottom: 1px solid rgba(0, 0, 0, .125)!important;
 }
-.list-group-flush:first-child .list-group-item:first-child{
-  border-top: 1px solid rgba(0,0,0,.125);
+
+.list-group-flush:first-child .list-group-item:first-child {
+  border-top: 1px solid rgba(0, 0, 0, .125);
 }
-.marketWatch ul li span.badge{
+
+.marketWatch ul li span.badge {
   bottom: 0px;
   cursor: pointer;
   height: 27px;
@@ -86,50 +104,111 @@ li.list-group-item:nth-child(n+2) {
   transform-origin: 17.5px 13.5px;
   user-select: none;
   caret-color: rgb(255, 255, 255);
-  /* background: rgb(255, 87, 34) none repeat scroll 0% 0% / auto padding-box border-box; */
-  
   border-radius: 2px 2px 2px 2px;
   font: normal normal 600 normal 11px / 17.6px "Open Sans", sans-serif;
   margin: 0px 0px 0px 3px;
   outline: rgb(255, 255, 255) none 0px;
   padding: 4px 10px;
 }
-/* .buyStyle{
 
-} */
-/* .sellStyle{
-  background: rgb(255, 87, 34) none repeat scroll 0% 0% / auto padding-box border-box;
-  border: 1px solid rgb(255, 87, 34);
-} */
-.white-skin input[type=checkbox]:checked+label:before{
+.white-skin input[type=checkbox]:checked+label:before {
   border: none!important;
 }
-.hGray{
+
+.hGray {
   color: #212121!important;
   background-color: #fff !important;
 }
-.hGray:hover{
+
+.hGray:hover {
   background-color: #9b9b9b!important;
   color: #fff!important;
 }
-.mrtSearch input:focus{
+
+.mrtSearch input:focus {
   box-shadow: none!important;
 }
-ul .actionBtn{
+
+ul .actionBtn {
   position: absolute;
   right: 10px;
 }
-.marketWatch li.list-group-item:nth-of-type(n+2){
+
+.marketWatch li.list-group-item:nth-of-type(n+2) {
   font-weight: 400;
   text-transform: uppercase;
 }
-.mrtSearch i.fa-search{
+
+.mrtSearch i.fa-search {
   color: #bfbfbf!important;
 }
-.symSearchRes .badge{
+
+.symSearchRes .badge {
   padding: .9em 1.5em;
   cursor: pointer;
 }
-.symSearchRes .actionBtn{
+
+.symSearchRes .actionBtn {
   bottom: 8px;
+}
+
+.complite-order table td, .complite-order table th {
+  padding: 0.9rem 1.4rem;
+  font-size: smaller;
+  vertical-align: middle;
+}
+
+table thead th {
+  font-weight: 300 !important;
+  color: var(--bs-gray);
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+
+table .text-label.order-status {
+  cursor: pointer;
+}
+
+.text-label {
+  background-color: rgba(var(--color-default)/ .1);
+}
+
+.text-label.blue {
+  color: rgba(var(--color-blue));
+  background-color: rgba(var(--color-blue), .1);
+}
+
+.text-label.green {
+  color: rgba(var(--color-green));
+  background-color: rgba(var(--color-green), .1);
+}
+
+.text-label.red {
+  color: rgba(var(--color-red));
+  background-color: rgba(var(--color-red), .1);
+}
+
+.text-label.orange {
+  color: rgba(var(--color-orange));
+  background-color: rgba(var(--color-orange), .1);
+}
+
+.text-label.aqua {
+  color: rgba(var(--color-aqua));
+  background-color: rgba(var(--color-aqua), .1);
+}
+
+.text-label.amber {
+  color: rgba(var(--color-amber));
+  background-color: rgba(var(--color-amber), .1);
+}
+
+.text-label.rose {
+  color: rgba(var(--color-rose));
+  background-color: rgba(var(--color-rose), .1);
+}
+
+.text-label.teal {
+  color: rgba(var(--color-teal));
+  background-color: rgba(var(--color-teal), .1);
 }

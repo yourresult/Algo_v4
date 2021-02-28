@@ -5,6 +5,7 @@ import { fetchJobs } from '../actions';
 import Header from '../components/Header'
 import PinnedInstruments from '../components/cards/PinnedInstruments'
 import MarketwatchSidebar from '../components/cards/MarketwatchSidebar'
+import Orders from '../components/cards/OrderList'
 
 const data = {
   marketWatchInstruments: {
@@ -47,7 +48,9 @@ class JobsList extends Component {
           <div className="col-md-3 shadow-2 pt-1 marketWatch">
             <MarketwatchSidebar data={data.marketWatchInstruments}/>
           </div>
-          <div className="col-md-9 px-2">Right</div>
+          <div className="col-md-9 px-2">
+            <Orders />
+          </div>
         </div>
       </div>
     );
