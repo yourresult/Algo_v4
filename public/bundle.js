@@ -63162,7 +63162,16 @@ var orderDemoData = [{
 }, {
   t: "06:32:06", // Time
   ty: "BUY", // Type
-  inst: "SBIN", // Instrument
+  inst: "RELIANCE", // Instrument
+  pt: "MIS", // Product Type
+  qty: "100", // Qutenty
+  ltp: "407.25",
+  pri: "407.25", // Price
+  st: "AMO REQ RECIVED" // Aftermarket Order Recived
+}, {
+  t: "06:32:06", // Time
+  ty: "BUY", // Type
+  inst: "GAIL", // Instrument
   pt: "MIS", // Product Type
   qty: "100", // Qutenty
   ltp: "407.25",
