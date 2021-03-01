@@ -8,13 +8,8 @@ var defaultStyle = {
         textAlign: "center",
         textTransform: "uppercase",
     
-        /* Color & Background */
-        // backgroundColor: "rgba(65, 132, 243, 0.1)",
-        // color: "rgb(65, 132, 243)",
-    
         /* Box */
         height: "20px",
-        // width: "45px",
         padding: "2px 12px",
     
         /* Positioning */

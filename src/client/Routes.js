@@ -6,6 +6,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import AdminsListPage from './pages/AdminsListPage';
 import JobsListPage from './pages/HomePage';
 import JobSinglePost from './pages/JobSinglePage';
+import Orders from './pages/Order';
 
 export default [
   {
@@ -23,6 +24,10 @@ export default [
       {
         ...JobSinglePost,
         path: '/job/:slug'
+      },
+      {
+        ...Orders,
+        path: '/orders'
       },
       {
         ...UsersListPage,

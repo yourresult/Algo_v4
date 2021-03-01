@@ -34,19 +34,19 @@ const Header = ({ auth }) => {
     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
         <li className="nav-item">
-              <Link className="nav-link px-3" to="/jobs">Dashboard</Link>
+              <Link className="nav-link px-3" to="/dashboard">Dashboard</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link px-3" to="/college">Orders</Link>
+              <Link className="nav-link px-3" to="/orders">Orders</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link px-3" to="/results">Holdings</Link>
+              <Link className="nav-link px-3" to="/holdings">Holdings</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link px-3" to="/admit-card">Positions</Link>
+              <Link className="nav-link px-3" to="/positions">Positions</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link px-3" to="/answer-key">Funds</Link>
+              <Link className="nav-link px-3" to="/funds">Funds</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link px-3" to="/users">Apps</Link>

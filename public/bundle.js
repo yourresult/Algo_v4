@@ -9802,6 +9802,10 @@ var _JobSinglePage = __webpack_require__(546);
 
 var _JobSinglePage2 = _interopRequireDefault(_JobSinglePage);
 
+var _Order = __webpack_require__(553);
+
+var _Order2 = _interopRequireDefault(_Order);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = [_extends({}, _App2.default, {
@@ -9812,6 +9816,8 @@ exports.default = [_extends({}, _App2.default, {
     path: '/admins'
   }), _extends({}, _JobSinglePage2.default, {
     path: '/job/:slug'
+  }), _extends({}, _Order2.default, {
+    path: '/orders'
   }), _extends({}, _UsersListPage2.default, {
     path: '/users'
   }), _extends({}, _HomePage2.default, {
@@ -52106,20 +52112,65 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterConfig = __webpack_require__(121);
 
+var _Header = __webpack_require__(483);
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _PinnedInstruments = __webpack_require__(484);
+
+var _PinnedInstruments2 = _interopRequireDefault(_PinnedInstruments);
+
+var _MarketwatchSidebar = __webpack_require__(485);
+
+var _MarketwatchSidebar2 = _interopRequireDefault(_MarketwatchSidebar);
+
 var _actions = __webpack_require__(31);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var data = {
+  marketWatchInstruments: {
+    symbol: ['SBIN', 'GAIL', 'PNB', 'INFY', 'TATASTEEL']
+  }
+};
 var App = function App(_ref) {
   var route = _ref.route;
 
   return _react2.default.createElement(
     'div',
     null,
-    (0, _reactRouterConfig.renderRoutes)(route.routes)
+    _react2.default.createElement(
+      'div',
+      { className: 'row navbar py-0' },
+      _react2.default.createElement(
+        'div',
+        { className: 'header-left col-md-3' },
+        _react2.default.createElement(_PinnedInstruments2.default, { name: 'Nifty 50' }),
+        _react2.default.createElement(_PinnedInstruments2.default, { name: 'sensex' })
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'header-right col-md-9 border-start' },
+        _react2.default.createElement(_Header2.default, null)
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'row py-0' },
+      _react2.default.createElement(
+        'div',
+        { className: 'col-md-3 shadow-2 pt-1 marketWatch' },
+        _react2.default.createElement(_MarketwatchSidebar2.default, { data: data.marketWatchInstruments })
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'col-md-9 px-2' },
+        (0, _reactRouterConfig.renderRoutes)(route.routes)
+      )
+    )
   );
 };
-// import Header from './components/Header';
+
 exports.default = {
   component: App,
   loadData: function loadData(_ref2) {
@@ -52217,40 +52268,7 @@ var JobsList = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        this.head(),
-        _react2.default.createElement(
-          'div',
-          { className: 'row navbar py-0' },
-          _react2.default.createElement(
-            'div',
-            { className: 'header-left col-md-3' },
-            _react2.default.createElement(_PinnedInstruments2.default, { name: 'Nifty 50' }),
-            _react2.default.createElement(_PinnedInstruments2.default, { name: 'sensex' })
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'header-right col-md-9 border-start' },
-            _react2.default.createElement(_Header2.default, null)
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'row py-0' },
-          _react2.default.createElement(
-            'div',
-            { className: 'col-md-3 shadow-2 pt-1 marketWatch' },
-            _react2.default.createElement(_MarketwatchSidebar2.default, { data: data.marketWatchInstruments })
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'col-md-9 px-2' },
-            _react2.default.createElement(_OrderList2.default, null)
-          )
-        )
-      );
+      return _react2.default.createElement('div', null);
     }
   }]);
 
@@ -52614,7 +52632,7 @@ var Header = function Header(_ref) {
             { className: 'nav-item' },
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { className: 'nav-link px-3', to: '/jobs' },
+              { className: 'nav-link px-3', to: '/dashboard' },
               'Dashboard'
             )
           ),
@@ -52623,7 +52641,7 @@ var Header = function Header(_ref) {
             { className: 'nav-item' },
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { className: 'nav-link px-3', to: '/college' },
+              { className: 'nav-link px-3', to: '/orders' },
               'Orders'
             )
           ),
@@ -52632,7 +52650,7 @@ var Header = function Header(_ref) {
             { className: 'nav-item' },
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { className: 'nav-link px-3', to: '/results' },
+              { className: 'nav-link px-3', to: '/holdings' },
               'Holdings'
             )
           ),
@@ -52641,7 +52659,7 @@ var Header = function Header(_ref) {
             { className: 'nav-item' },
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { className: 'nav-link px-3', to: '/admit-card' },
+              { className: 'nav-link px-3', to: '/positions' },
               'Positions'
             )
           ),
@@ -52650,7 +52668,7 @@ var Header = function Header(_ref) {
             { className: 'nav-item' },
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { className: 'nav-link px-3', to: '/answer-key' },
+              { className: 'nav-link px-3', to: '/funds' },
               'Funds'
             )
           ),
@@ -63327,7 +63345,7 @@ exports.default = MarketWatch;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _react = __webpack_require__(5);
@@ -63337,39 +63355,34 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var defaultStyle = {
-    /* Font & Text */
-    fontFamily: "'Open Sans', sans-serif",
-    fontSize: "10px",
-    fontStyle: "normal",
-    letterSpacing: "0.5px",
-    textAlign: "center",
-    textTransform: "uppercase",
+  /* Font & Text */
+  fontFamily: "'Open Sans', sans-serif",
+  fontSize: "10px",
+  fontStyle: "normal",
+  letterSpacing: "0.5px",
+  textAlign: "center",
+  textTransform: "uppercase",
 
-    /* Color & Background */
-    // backgroundColor: "rgba(65, 132, 243, 0.1)",
-    // color: "rgb(65, 132, 243)",
+  /* Box */
+  height: "20px",
+  padding: "2px 12px",
 
-    /* Box */
-    height: "20px",
-    // width: "45px",
-    padding: "2px 12px",
-
-    /* Positioning */
-    display: "inline-block",
-    zIndex: "auto",
-    borderRadius: "2px"
+  /* Positioning */
+  display: "inline-block",
+  zIndex: "auto",
+  borderRadius: "2px"
 };
 
 var type = function type(props) {
-    return _react2.default.createElement(
-        "b",
-        null,
-        _react2.default.createElement(
-            "span",
-            { className: "text-label " + props.class, style: defaultStyle },
-            props.massage
-        )
-    );
+  return _react2.default.createElement(
+    "b",
+    null,
+    _react2.default.createElement(
+      "span",
+      { className: "text-label " + props.class, style: defaultStyle },
+      props.massage
+    )
+  );
 };
 exports.default = type;
 
@@ -63951,6 +63964,114 @@ exports.default = function () {
 var _actions = __webpack_require__(31);
 
 ;
+
+/***/ }),
+/* 553 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(38);
+
+var _reactHelmet = __webpack_require__(123);
+
+var _reactRouterConfig = __webpack_require__(121);
+
+var _Routes = __webpack_require__(182);
+
+var _Routes2 = _interopRequireDefault(_Routes);
+
+var _OrderList = __webpack_require__(540);
+
+var _OrderList2 = _interopRequireDefault(_OrderList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// import { detailJobs } from '../actions';
+
+
+// const branch = matchRoutes(routes, location.pathname)
+
+var Order = function (_Component) {
+  _inherits(Order, _Component);
+
+  function Order() {
+    _classCallCheck(this, Order);
+
+    return _possibleConstructorReturn(this, (Order.__proto__ || Object.getPrototypeOf(Order)).apply(this, arguments));
+  }
+
+  _createClass(Order, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      // this.props.detailJobs();
+    }
+  }, {
+    key: 'renderUsers',
+    value: function renderUsers() {
+      // console.log(this.props.job);
+      // console.log("lllllllllllllllllllllllllllll", this.props.match.params.slug);
+    }
+  }, {
+    key: 'head',
+    value: function head() {
+      return _react2.default.createElement(
+        _reactHelmet.Helmet,
+        null,
+        _react2.default.createElement(
+          'title',
+          null,
+          'Orders'
+        ),
+        _react2.default.createElement('meta', { property: 'og:title', content: 'Users App' })
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        this.head(),
+        _react2.default.createElement(_OrderList2.default, null)
+      );
+    }
+  }]);
+
+  return Order;
+}(_react.Component);
+
+function mapStateToProps(state) {
+  //   return { job: state.detailJob };
+}
+
+function loadData(store) {}
+//   return store.dispatch(detailJobs());
+
+
+// export default {
+//   loadData,
+//   component: connect(mapStateToProps, { detailJobs })(Order)
+// };
+exports.default = {
+  component: Order
+};
 
 /***/ })
 /******/ ]);

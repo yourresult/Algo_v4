@@ -34,24 +34,7 @@ class JobsList extends Component {
   render() {
     return (
       <div>
-        {this.head()}
-        <div className="row navbar py-0">
-          <div className="header-left col-md-3">
-            <PinnedInstruments name="Nifty 50" />
-            <PinnedInstruments name="sensex" />
-          </div>
-          <div className="header-right col-md-9 border-start">
-            <Header />
-          </div>
-        </div>
-        <div className="row py-0">
-          <div className="col-md-3 shadow-2 pt-1 marketWatch">
-            <MarketwatchSidebar data={data.marketWatchInstruments}/>
-          </div>
-          <div className="col-md-9 px-2">
-            <Orders />
-          </div>
-        </div>
+        
       </div>
     );
   }

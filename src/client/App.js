@@ -1,13 +1,35 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
-// import Header from './components/Header';
+import Header from './components/Header';
+import PinnedInstruments from './components/cards/PinnedInstruments'
+import MarketwatchSidebar from './components/cards/MarketwatchSidebar'
 import { fetchCurrentUser } from './actions';
 
+const data = {
+  marketWatchInstruments: {
+    symbol: ['SBIN', 'GAIL', 'PNB', 'INFY', 'TATASTEEL']
+  }
+}
 const App = ({ route }) => {
   return (
     <div>
-      {/* <Header /> */}
-      {renderRoutes(route.routes)}
+      <div className="row navbar py-0">
+        <div className="header-left col-md-3">
+          <PinnedInstruments name="Nifty 50" />
+          <PinnedInstruments name="sensex" />
+        </div>
+        <div className="header-right col-md-9 border-start">
+          <Header />
+        </div>
+      </div>
+      <div className="row py-0">
+        <div className="col-md-3 shadow-2 pt-1 marketWatch">
+          <MarketwatchSidebar data={data.marketWatchInstruments} />
+        </div>
+        <div className="col-md-9 px-2">
+          {renderRoutes(route.routes)}
+        </div>
+      </div>
     </div>
   );
 };
