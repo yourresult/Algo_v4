@@ -23,10 +23,10 @@ const App = ({ route }) => {
         </div>
       </div>
       <div className="row py-0">
-        <div className="col-md-3 shadow-2 pt-1 marketWatch">
+        <div className="col-md-3 shadow-2 pt-1 marketWatch d-none d-md-block">
           <MarketwatchSidebar data={data.marketWatchInstruments} />
         </div>
-        <div className="col-md-9 px-2">
+        <div className="col-md-9 px-2 p-5 ps-4">
           {renderRoutes(route.routes)}
         </div>
       </div>

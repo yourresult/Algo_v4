@@ -24,7 +24,13 @@
 body {
   background-color: var(--backgroundColor);
 }
-
+.text-small {
+  font-size: small;
+  font-weight: lighter;
+}
+.text-red {
+  color: var(--color-text-2);
+}
 input {
   outline: none;
 }
@@ -150,6 +156,11 @@ ul .actionBtn {
 
 .symSearchRes .actionBtn {
   bottom: 8px;
+}
+
+.label {
+  font-weight: 100;
+  font-size: smaller;
 }
 
 .complite-order table td, .complite-order table th {

@@ -7,6 +7,7 @@ import AdminsListPage from './pages/AdminsListPage';
 import JobsListPage from './pages/HomePage';
 import JobSinglePost from './pages/JobSinglePage';
 import Orders from './pages/Order';
+import Dashboard from './pages/Dashboard';
 
 export default [
   {
@@ -28,6 +29,10 @@ export default [
       {
         ...Orders,
         path: '/orders'
+      },
+      {
+        ...Dashboard,
+        path: '/dashboard'
       },
       {
         ...UsersListPage,

@@ -51,7 +51,7 @@ const MarketWatch = (props) => {
   })
 
   return (
-    <div className="complite-order mt-5 px-4 pt-4">
+    <div className="complite-order px-4 pt-4">
       <div className="tableHeader">
         <h5 className="d-inline">Executed orders</h5>
         <span className="float-end" style={{ fontSize: "x-small" }}>
