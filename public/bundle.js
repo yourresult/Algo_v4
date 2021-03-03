@@ -63915,6 +63915,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _equity, _commodity;
+
 var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
@@ -63936,6 +63938,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 // import { detailJobs } from '../actions';
 
 
@@ -63944,7 +63948,22 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var data = {
   users: {
     name: "Vivek"
+  },
+  margin: {
+    equity: (_equity = {
+      enabled: true,
+      marginUsed: 1968.99
+    }, _defineProperty(_equity, 'marginUsed', 0), _defineProperty(_equity, 'live_balance', 1968.99), _defineProperty(_equity, 'openingBalance', 1968.99), _equity),
+    commodity: (_commodity = {
+      enabled: false,
+      marginUsed: 0
+    }, _defineProperty(_commodity, 'marginUsed', 0), _defineProperty(_commodity, 'live_balance', 1968.99), _defineProperty(_commodity, 'openingBalance', 0), _commodity)
+  },
+  holdings: {
+    currentValue: 219.4,
+    investment: 246.4
   }
+
 };
 
 var Order = function (_Component) {
@@ -63960,6 +63979,28 @@ var Order = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       // this.props.detailJobs();
+    }
+  }, {
+    key: 'nFormatter',
+    value: function nFormatter(num) {
+      if (num >= 1000000000) {
+        return (num / 1000000000).toFixed(2) + 'B';
+      }
+      if (num >= 1000000) {
+        return (num / 1000000).toFixed(2) + 'M';
+      }
+      if (num >= 1000) {
+        return (num / 1000).toFixed(2) + 'k';
+      }
+      return num;
+    }
+  }, {
+    key: 'pnl',
+    value: function pnl() {
+      var a = data.holdings;
+      var b = a.currentValue - a.investment;
+      var c = b / a.investment * 100;
+      return [b, c.toFixed(2) + "%"];
     }
   }, {
     key: 'renderUsers',
@@ -63990,7 +64031,7 @@ var Order = function (_Component) {
         this.head(),
         _react2.default.createElement(
           'h4',
-          null,
+          { className: 'fw-normal' },
           'Hi, ',
           data.users.name
         ),
@@ -64016,7 +64057,7 @@ var Order = function (_Component) {
                 _react2.default.createElement(
                   'h3',
                   { style: { fontSize: "2.4rem", fontWeight: "100" } },
-                  '1.97k'
+                  this.nFormatter(data.margin.equity.live_balance)
                 ),
                 _react2.default.createElement(
                   'span',
@@ -64058,7 +64099,7 @@ var Order = function (_Component) {
                       _react2.default.createElement(
                         'th',
                         { className: 'pt-0 pe-0' },
-                        '1.97K'
+                        this.nFormatter(data.margin.equity.openingBalance)
                       )
                     )
                   )
@@ -64112,7 +64153,7 @@ var Order = function (_Component) {
                       _react2.default.createElement(
                         'th',
                         { className: 'pe-0' },
-                        '0'
+                        this.nFormatter(data.margin.commodity.openingBalance)
                       )
                     ),
                     _react2.default.createElement(
@@ -64126,7 +64167,7 @@ var Order = function (_Component) {
                       _react2.default.createElement(
                         'th',
                         { className: 'pt-0 pe-0' },
-                        '1.97K'
+                        this.nFormatter(data.margin.commodity.openingBalance)
                       )
                     )
                   )
@@ -64157,11 +64198,12 @@ var Order = function (_Component) {
                 _react2.default.createElement(
                   'h3',
                   { className: 'text-red', style: { fontSize: "2.4rem", fontWeight: "100" } },
-                  '-28.55 ',
+                  this.pnl()[0],
+                  ' ',
                   _react2.default.createElement(
                     'small',
                     { className: 'text-small' },
-                    '-11.99%'
+                    this.pnl()[1]
                   )
                 ),
                 _react2.default.createElement(
@@ -64188,12 +64230,12 @@ var Order = function (_Component) {
                         _react2.default.createElement(
                           'td',
                           { className: 'ps-1 pe-0 ps-md-4' },
-                          'Margin Used'
+                          'Current Value'
                         ),
                         _react2.default.createElement(
                           'th',
                           { className: 'pe-0' },
-                          '0'
+                          this.nFormatter(data.holdings.currentValue)
                         )
                       ),
                       _react2.default.createElement(
@@ -64207,7 +64249,7 @@ var Order = function (_Component) {
                         _react2.default.createElement(
                           'th',
                           { className: 'pt-0 pe-0' },
-                          '1.97K'
+                          this.nFormatter(data.holdings.investment)
                         )
                       )
                     )
