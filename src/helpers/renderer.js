@@ -19,7 +19,7 @@ export default (req, store, context) => {
   const helmet = Helmet.renderStatic();
 
   return `
-    <html>
+    <!DOCTYPE html>
       <head>
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
@@ -38,6 +38,6 @@ export default (req, store, context) => {
         </script>
         <script src="/bundle.js"></script>
       </body>
-    </html>
+    </!DOCTYPE>
   `;
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable, resetServerContext } from 'react-beautiful-dnd';
 const style = {
     inputSearch: {
         fontSize: "0.8rem",
@@ -69,9 +69,11 @@ const MarketWatch = (props) => {
                             </div>
                         </li>
                         {instruments}
+                        {provided.placeholder}
                     </ul>
                 )}
             </Droppable>
+            {resetServerContext()}
         </DragDropContext>
     );
 
