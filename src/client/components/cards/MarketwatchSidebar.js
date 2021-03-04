@@ -8,7 +8,7 @@ const style = {
         paddingRight: ".75em",
         minHeight: "auto",
         padding: ".33em .75em",
-        border: "0",
+        border: "0", 
         background: "transparent",
         transition: "all .2s linear",
         width: "100%"

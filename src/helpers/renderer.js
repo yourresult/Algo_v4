@@ -20,6 +20,7 @@ export default (req, store, context) => {
 
   return `
     <!DOCTYPE html>
+    <html>
       <head>
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
@@ -38,6 +39,6 @@ export default (req, store, context) => {
         </script>
         <script src="/bundle.js"></script>
       </body>
-    </!DOCTYPE>
+    </html>
   `;
 };
