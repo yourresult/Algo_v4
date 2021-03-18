@@ -1,7 +1,7 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
   // Tell webpack the root file of our
@@ -14,9 +14,9 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public')
   },
-  // plugins: [
-  //   new BundleAnalyzerPlugin()
-  // ]
+  plugins: [
+    new BundleAnalyzerPlugin()
+  ]
 };
 
 module.exports = merge(baseConfig, config);

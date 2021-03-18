@@ -1,6 +1,7 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
 import Header from './components/Header';
+import Ow from './components/cards/OrderWindow';
 import PinnedInstruments from './components/cards/PinnedInstruments'
 import MarketwatchSidebar from './components/cards/MarketwatchSidebar'
 import { fetchCurrentUser } from './actions';
@@ -28,6 +29,7 @@ const App = ({ route }) => {
         </div>
         <div className="col-md-9 px-2 p-5 ps-4">
           {renderRoutes(route.routes)}
+          <Ow />
         </div>
       </div>
     </div>

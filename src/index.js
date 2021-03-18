@@ -6,7 +6,10 @@ import Routes from './client/Routes';
 import renderer from './helpers/renderer';
 import createStore from './helpers/createStore';
 
+import compression from 'compression';
+
 const app = express();
+app.use(compression());
 app.use(
   '/api',
   proxy('http://localhost:4000', {

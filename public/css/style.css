@@ -24,13 +24,16 @@
 body {
   background-color: var(--backgroundColor);
 }
+
 .text-small {
   font-size: small;
   font-weight: lighter;
 }
+
 .text-red {
   color: var(--color-text-2);
 }
+
 input {
   outline: none;
 }
@@ -222,4 +225,88 @@ table .text-label.order-status {
 .text-label.teal {
   color: rgba(var(--color-teal));
   background-color: rgba(var(--color-teal), .1);
+}
+
+/*  Transaction Modal / Order Window  */
+
+.sell .card-header {
+  background-color: rgba(var(--color-orange), 1);
+}
+
+.buy .card-header {
+  background-color: rgba(var(--color-blue), 1);
+}
+
+.ordWindow.buy .form-check-input:checked {
+  border-color: rgba(var(--color-blue), 1);
+}
+
+.ordWindow.sell .form-check-input:checked {
+  border-color: rgba(var(--color-orange), 1);
+}
+
+.ordWindow .form-switch .form-check-input:checked[type=checkbox]:after {
+  background-color: var(--color-text-2)
+}
+
+.ordWindow .form-check-input[type=radio], .ordWindow.buy .form-check-input[type=radio] {
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+  top: 2px;
+  left: 10px;
+  border-color: rgba(var(--color-blue), 1);
+}
+
+.ordWindow.sell .form-check-input[type=radio] {
+  border-color: rgba(var(--color-orange), 1);
+}
+
+.ordWindow.buy .form-check-input:checked[type=radio]:after {
+  background-color: rgba(var(--color-blue), 1);
+  border-color: rgba(var(--color-blue), 1);
+}
+
+.ordWindow.sell .form-check-input:checked[type=radio]:after {
+  background-color: rgba(var(--color-orange), 1);
+  border-color: rgba(var(--color-orange), 1);
+}
+
+.ordWindow .form-check-input[type=radio]:after {
+  width: .400rem;
+  height: .400rem;
+  position: relative;
+  top: 2px;
+  left: 1.2px;
+  margin: 1px 1px;
+  background-color: transparent;
+}
+.ordWindow .form-check-input:checked:focus:before{
+  box-shadow: none;
+}
+
+.ordWindow .input span {
+  font-size: small;
+}
+.ordWindow .input input {
+  border: none;
+  padding: 6px 0;
+  margin-top: 5px;
+  border-bottom: 1px solid #b8b6b6;
+}
+.ordWindow .input input:disabled {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==) repeat;
+  border-bottom: none;
+}
+.ordWindow button {
+  width: 44%;
+  font-weight: 400;
+}
+.ordWindow.buy button.submit {
+  background-color: rgba(var(--color-blue), 1);
+  color: #fff;
+}
+.ordWindow.sell button.submit {
+  background-color: rgba(var(--color-orange), 1);
+  color: #fff;
 }
