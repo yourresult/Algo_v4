@@ -8,6 +8,10 @@ const newJob = require('./jobs/newJob');
 const updateJob = require('./jobs/updateJob');
 const getJob = require('./jobs/getJob');
 const jobList = require('./jobs/jobList');
+// Orders Pages
+const placeOrder = require('./order/placeOrder');
+const viewUserOrders = require('./order/viewUserOrders');
+
 module.exports = {
     register,
     login,
@@ -18,5 +22,7 @@ module.exports = {
     newJob,
     updateJob,
     getJob,
-    jobList
+    jobList,
+    placeOrder,
+    viewUserOrders
 }

@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const adminAuthRoute = require('./admin/routes/auth');
 const adminPostRoute = require('./admin/routes/post');
 const adminJobRoute = require('./admin/routes/job');
+const userOrderRoute = require('./admin/routes/order');
 const pubPostRoute = require('./public/routes/post');
 const pubJobRoute = require('./public/routes/job');
 var cors = require('cors')
@@ -31,6 +32,7 @@ app.use(bodyParser.json());
 app.use('/api/admin', adminAuthRoute);
 app.use('/api/admin', adminPostRoute);
 app.use('/api/admin', adminJobRoute);
+app.use('/api/admin', userOrderRoute);
 
 // Public Routes Middlewares
 app.use('/api/post', pubPostRoute);
