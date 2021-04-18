@@ -12,7 +12,7 @@ import Routes from './Routes';
 import reducers from './reducers';
 
 const axiosInstance = axios.create({
-  baseURL: '/'
+  baseURL: '/api'
 });
 
 const store = createStore(

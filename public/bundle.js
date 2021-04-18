@@ -10620,7 +10620,7 @@ var _reducers2 = _interopRequireDefault(_reducers);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var axiosInstance = _axios2.default.create({
-  baseURL: '/'
+  baseURL: '/api'
 }); // Startup point for the client side application
 
 
