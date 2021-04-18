@@ -11,7 +11,7 @@ import compression from 'compression';
 const app = express();
 app.use(compression());
 app.use(
-  '/api',
+  '/',
   proxy('http://localhost:4000', {
     proxyReqOptDecorator(opts) {
       opts.headers['x-forwarded-host'] = 'localhost:3000';

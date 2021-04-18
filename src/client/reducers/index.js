@@ -4,13 +4,15 @@ import authReducer from './authReducer';
 import adminsReducer from './adminsReducer';
 import jobsNotifReducer from './homePageReducer';
 import detailJob from './detailJobReducer';
+import order from './orderReducer';
 
 export default combineReducers({
   users: usersReducer,
   auth: authReducer,
   admins: adminsReducer,
   jobsNotification: jobsNotifReducer,
-  detailJob: detailJob
+  detailJob: detailJob,
+  order: order
 });
 // export default combineReducers({
 //   usersReducer,

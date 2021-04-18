@@ -9,6 +9,15 @@
 //   });
 // };
 
+export const ORDER = 'order';
+export const getOrders = () => async (dispatch, getState, api) => {
+  const res = await api.post('/admin/order');
+  dispatch({
+    type: ORDER,
+    payload: res
+  });
+};
+
 export const FETCH_JOBS = 'fetch_jobs';
 export const fetchJobs = () => async (dispatch, getState, api) => {
   const res = await api.get('/job/jobs_notification?limit=6');

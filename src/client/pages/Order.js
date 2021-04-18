@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-// import { detailJobs } from '../actions';
+import { getOrders } from '../actions';
 import { matchRoutes } from 'react-router-config';
 import Routes from '../../client/Routes';
 import OrderList from '../components/cards/OrderList'
@@ -9,11 +9,11 @@ import OrderList from '../components/cards/OrderList'
 
 class Order extends Component {
   componentDidMount() {
-    // this.props.detailJobs();
+    this.props.getOrders();
   }
 
   renderUsers() {
-    // console.log(this.props.job);
+    console.log("check", this.props.job);
     // console.log("lllllllllllllllllllllllllllll", this.props.match.params.slug);
   }
 
@@ -32,24 +32,26 @@ class Order extends Component {
       <div>
         {this.head()}
         <OrderList />
-        {/* <ul>{this.renderUsers()}</ul> */}
+        <ul>{this.renderUsers()}</ul>
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-//   return { job: state.detailJob };
+  // console.log(state);
+    return { job: state.detailJob };
 }
 
 function loadData(store) {
-//   return store.dispatch(detailJobs());
+  // console.log(store);
+    return store.dispatch(getOrders());
 }
 
-// export default {
-//   loadData,
-//   component: connect(mapStateToProps, { detailJobs })(Order)
-// };
 export default {
-  component: Order
+  loadData,
+  component: connect(mapStateToProps, { getOrders })(Order)
 };
+// export default {
+//   component: Order
+// };

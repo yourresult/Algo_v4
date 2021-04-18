@@ -310,3 +310,6 @@ table .text-label.order-status {
   background-color: rgba(var(--color-orange), 1);
   color: #fff;
 }
+.ordWindow {
+  display: none;
+}
