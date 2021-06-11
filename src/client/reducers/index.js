@@ -5,6 +5,7 @@ import adminsReducer from './adminsReducer';
 import jobsNotifReducer from './homePageReducer';
 import detailJob from './detailJobReducer';
 import order from './orderReducer';
+import subscribe from './subscribe';
 
 export default combineReducers({
   users: usersReducer,
@@ -12,7 +13,8 @@ export default combineReducers({
   admins: adminsReducer,
   jobsNotification: jobsNotifReducer,
   detailJob: detailJob,
-  order: order
+  order: order,
+  subscribe: subscribe
 });
 // export default combineReducers({
 //   usersReducer,

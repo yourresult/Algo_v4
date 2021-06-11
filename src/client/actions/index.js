@@ -9,9 +9,19 @@
 //   });
 // };
 
+export const SUBSCRIBE = 'subscribe';
+export const getSubscribe = (dat) => async (dispatch, getState, api) => {
+  // const res = await api.post('/api/admin/order');
+  const ar = dat
+  dispatch({
+    type: SUBSCRIBE,
+    payload: ar
+  });
+};
+
 export const ORDER = 'order';
 export const getOrders = () => async (dispatch, getState, api) => {
-  const res = await api.post('/admin/order');
+  const res = await api.post('/api/admin/order');
   dispatch({
     type: ORDER,
     payload: res
@@ -49,7 +59,6 @@ export const fetchUsers = () => async (dispatch, getState, api) => {
 export const FETCH_CURRENT_USER = 'fetch_current_user';
 export const fetchCurrentUser = () => async (dispatch, getState, api) => {
   const res = await api.get('/current_user');
-
   dispatch({
     type: FETCH_CURRENT_USER,
     payload: res

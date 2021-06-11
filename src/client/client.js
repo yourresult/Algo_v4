@@ -12,7 +12,10 @@ import Routes from './Routes';
 import reducers from './reducers';
 
 const axiosInstance = axios.create({
-  baseURL: '/api'
+  baseURL: '/api',
+  headers: {
+    'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDY4MmRlM2I3MGE1ZjMwZDQ5NWI4YmUiLCJpYXQiOjE2MTg4ODk2ODF9.OV58GT3ORfIWrauZLKAAlNGExPDU3DDjPw7Gayfam6Q'
+   }
 });
 
 const store = createStore(

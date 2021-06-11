@@ -15,6 +15,7 @@ app.use(
   proxy('http://localhost:4000', {
     proxyReqOptDecorator(opts) {
       opts.headers['x-forwarded-host'] = 'localhost:3000';
+      opts.headers['auth-token'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDY4MmRlM2I3MGE1ZjMwZDQ5NWI4YmUiLCJpYXQiOjE2MTg4ODk2ODF9.OV58GT3ORfIWrauZLKAAlNGExPDU3DDjPw7Gayfam6Q';
       return opts;
     }
   })

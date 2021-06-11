@@ -13,8 +13,7 @@ class Order extends Component {
   }
 
   renderUsers() {
-    console.log("check", this.props.job);
-    // console.log("lllllllllllllllllllllllllllll", this.props.match.params.slug);
+    console.log("check", this.props.orders);
   }
 
   head() {
@@ -31,7 +30,8 @@ class Order extends Component {
     return (
       <div>
         {this.head()}
-        <OrderList />
+        {this.props.subscribe}
+        <OrderList data={this.props.orders}/>
         <ul>{this.renderUsers()}</ul>
       </div>
     );
@@ -39,13 +39,12 @@ class Order extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log(state);
-    return { job: state.detailJob };
+    console.log("state",state);
+    return { orders: state.order, subscribe: state.subscribe };
 }
 
 function loadData(store) {
-  // console.log(store);
-    return store.dispatch(getOrders());
+  return store.dispatch(getOrders());
 }
 
 export default {
