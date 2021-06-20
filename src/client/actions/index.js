@@ -19,6 +19,18 @@ export const getSubscribe = (dat) => async (dispatch, getState, api) => {
   });
 };
 
+
+export const LTP = 'ltp';
+export const getLTP = (dat) => async (dispatch, getState, api) => {
+  // const res = await api.post('/api/admin/order');
+  dispatch({
+    type: LTP,
+    payload: dat
+  });
+};
+
+
+
 export const ORDER = 'order';
 export const getOrders = () => async (dispatch, getState, api) => {
   const res = await api.post('/api/admin/order');

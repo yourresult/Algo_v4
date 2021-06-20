@@ -13,7 +13,7 @@ class Order extends Component {
   }
 
   renderUsers() {
-    console.log("check", this.props.orders);
+    // console.log("check", this.props.ltp);
   }
 
   head() {
@@ -30,8 +30,8 @@ class Order extends Component {
     return (
       <div>
         {this.head()}
-        {this.props.subscribe}
-        <OrderList data={this.props.orders}/>
+        {this.props.ltp['SBIN']}
+        <OrderList data={this.props.orders} ltp={this.props.ltp.data}/>
         <ul>{this.renderUsers()}</ul>
       </div>
     );
@@ -39,8 +39,7 @@ class Order extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("state",state);
-    return { orders: state.order, subscribe: state.subscribe };
+    return { orders: state.order, subscribe: state.subscribe, ltp: state.ltp };
 }
 
 function loadData(store) {

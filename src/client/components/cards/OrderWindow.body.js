@@ -39,7 +39,6 @@ const Ow = (props) => {
          * @param  {} action
          */
         var defaultCheck = (id = [], action, where) => {
-            console.log(id, action, where)
             id.map((d) => {
                 action ? document.getElementById(d).checked = true
                     : document.getElementById(d).checked = false;

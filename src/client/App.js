@@ -5,8 +5,8 @@ import Header from './components/Header';
 import Ow from './components/cards/OrderWindow';
 import PinnedInstruments from './components/cards/PinnedInstruments'
 import MarketwatchSidebar from './components/cards/MarketwatchSidebar'
-import { fetchCurrentUser, getSubscribe } from './actions';
-import firebase from './firebase';
+import { fetchCurrentUser, getSubscribe, getLTP } from './actions';
+import { getRealData, setRealData } from './GlobalFunction';
 
 // Kite websocket api integration
 
@@ -20,12 +20,23 @@ const data = {
   }
 }
 const App = (dat) => {
-  var database = firebase.database().ref().child('speed');
+  // var database = firebase.database().ref().child('stock/name');
   const dispatch = useDispatch();
 
   useEffect(() => {
-    database.on('value', snap => {
-      console.log(snap.val());
+    getRealData('stock/name').once('value', snap => {
+      var sName = snap.val();
+      var c = {};
+      getRealData('stock/price').on('value', pSnap => {
+        var pA = pSnap.val(); // Price array
+        pA.map((v,i) => {
+          var a,b;
+          a = sName[i];
+          b = v;
+          c[a] = b;
+        })
+        dispatch(getLTP(c));
+      })
     })
   });
   return (
@@ -33,7 +44,7 @@ const App = (dat) => {
       <div className="row navbar py-0">
         <div className="header-left col-md-3">
           <PinnedInstruments name="Nifty 50" />
-          <PinnedInstruments name="sensex" />
+          <PinnedInstruments name="Sensex" />
         </div>
         <div className="header-right col-md-9 border-start">
           <Header />

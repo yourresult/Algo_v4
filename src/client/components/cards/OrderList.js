@@ -33,8 +33,9 @@ const orderDemoData = [
   }
 ]
 const MarketWatch = (props) => {
-  const [ltp, setLtp] = useState(orderDemoData.ltp)
+  const ltp = props.ltp;
   if(props.data)  
+  if(ltp)
   var orderList = props.data.data.map((d, i) => {
     var da = new Date(d.date);
     var time = da.getHours() + ":" + da.getMinutes() + ":" + da.getSeconds();
@@ -45,7 +46,7 @@ const MarketWatch = (props) => {
         <td>{d.tradingsymbol}</td>
         <td>{d.product}</td>
         <td>{d.quantity}</td>
-        <td>{ltp}</td>
+        <td>{ltp[d.tradingsymbol]}</td>
         <td>{d.price}</td>
         <td><Buy massage={d.status} class={"order-status"}/></td>
       </tr>

@@ -1,9 +1,10 @@
 import { SUBSCRIBE } from '../actions';
 
-export default function(state = null, action) {
+export default function(state = [], action) {
   switch (action.type) {
     case SUBSCRIBE:
-        return action.payload || false;
+        var dat = [...state, action.payload];
+        return [...new Set(dat)];
     default:
       return state;
   }
