@@ -31,6 +31,8 @@ export default (req, store, context) => {
         <link rel="stylesheet" href="/fonts/icomoon/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" crossorigin="anonymous"></script>
       </head>
       <body>
         <div id="root">${content}</div>
@@ -38,6 +40,7 @@ export default (req, store, context) => {
           window.INITIAL_STATE = ${serialize(store.getState())};
         </script>
         <script src="/bundle.js"></script>
+        <script src="/custom.js"></script>
       </body>
     </html>
   `;

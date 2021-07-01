@@ -30,6 +30,7 @@ function getCookie(cname, isArray = false) {
  * ? Ow = Order Window
 */
 const Ow = (props) => {
+    console.log("Ow", props);
     const [a, b] = useState(0);
     const [r1, r2] = useState();
     const handleWindowInput = (d) => {
@@ -182,33 +183,33 @@ const Ow = (props) => {
                 <div className="row r1 mt-4">
                     <div className="col input d-inline-block">
                         <span>Qty</span><br />
-                        <input type="number" name="qty" id="qty" className="w-100"></input>
+                        <input type="number" name="qty" id="qty" className="w-100" defaultValue="1"></input>
                     </div>
                     <div className="col ps-2 input d-inline-block">
                         <span>Price</span><br />
-                        <input type="number" name="price" id="price" className="w-100"></input>
+                        <input type="number" name="price" id="price" className="w-100"  ></input>
                     </div>
                     <div className="col ps-2 input d-inline-block">
                         <span>Trigger price</span><br />
-                        <input type="number" name="triggerPrice" id="triggerPrice" className="w-100"></input>
+                        <input type="number" name="triggerPrice" id="triggerPrice" className="w-100" ></input>
                     </div>
                     <div className="col ps-2 input" id="disCL">
                         <span>Disclosed qty.</span><br />
-                        <input type="number" name="disclosed" id="disclosed" className="w-100"></input>
+                        <input type="number" name="disclosed" id="disclosed" className="w-100"  ></input>
                     </div>
                 </div>
                 <div className="row r2 mt-4">
                     <div className="col input d-inline-block">
                         <span>Stoploss</span><br />
-                        <input type="number" className="w-100"></input>
+                        <input type="number" className="w-100"  ></input>
                     </div>
                     <div className="col ps-2 input d-inline-block">
                         <span>Target</span><br />
-                        <input type="number" className="w-100"></input>
+                        <input type="number" className="w-100" ></input>
                     </div>
                     <div className="col ps-2 input d-inline-block">
                         <span>Trailing stoploss</span><br />
-                        <input type="number" className="w-100"></input>
+                        <input type="number" className="w-100" ></input>
                     </div>
                 </div>
                 <div className="row mt-4">

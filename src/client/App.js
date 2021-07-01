@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { renderRoutes } from 'react-router-config';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Header from './components/Header';
 import Ow from './components/cards/OrderWindow';
 import PinnedInstruments from './components/cards/PinnedInstruments'
@@ -22,10 +22,33 @@ const data = {
 const App = (dat) => {
   // var database = firebase.database().ref().child('stock/name');
   const dispatch = useDispatch();
+  const ltp = useSelector(state => state.ltp);
 
+  // useEffect(() => {
+  //   getRealData('stock/name').on('value', snap => {
+  //     setCheck(snap.val());
+  //   })
+  //   console.log(check);
+
+    // getRealData('stock/name').once('value', snap => {
+    //   var sName = snap.val();
+    //   var c = {};
+    //   getRealData('stock/price').on('value', pSnap => {
+    //     var pA = pSnap.val(); // Price array
+    //     pA.map((v,i) => {
+    //       var a,b;
+    //       a = sName[i];
+    //       b = v;
+    //       c[a] = b;
+    //     })
+    //     dispatch(getLTP(c));
+    //   })
+    // })
+  // }, [check]);
   useEffect(() => {
-    getRealData('stock/name').once('value', snap => {
-      var sName = snap.val();
+    // const todoRef = firebase.database().ref('Todo');
+    getRealData('stock/name').once('value', (pSnap) => {
+      const sName = pSnap.val();
       var c = {};
       getRealData('stock/price').on('value', pSnap => {
         var pA = pSnap.val(); // Price array
@@ -37,8 +60,8 @@ const App = (dat) => {
         })
         dispatch(getLTP(c));
       })
-    })
-  });
+    });
+  }, []);
   return (
     <div>
       <div className="row navbar py-0">
@@ -52,11 +75,14 @@ const App = (dat) => {
       </div>
       <div className="row py-0">
         <div className="col-md-3 shadow-2 pt-1 marketWatch d-none d-md-block">
+        {/* {check
+        ? <h4 >{check[0]}</h4>
+        : ''} */}
           <MarketwatchSidebar data={data.marketWatchInstruments} />
         </div>
         <div className="col-md-9 px-2 p-5 ps-4">
+          <Ow data={{ type: "buy", exchange: "BSE", instrument: "GAIL", ltp: ltp.data }} />
           {renderRoutes(dat.route.routes)}
-          <Ow />
         </div>
       </div>
     </div>

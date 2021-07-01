@@ -1,5 +1,9 @@
+import { isEmptyObject } from 'jquery';
+import { isEmpty } from 'lodash';
 import React, { useState, useEffect } from 'react';
-import Body from './OrderWindow.body'
+import { useSelector } from 'react-redux'
+import Body from './OrderWindow.body';
+// import $ from 'jquery';
 const style = {
 
 }
@@ -48,7 +52,13 @@ function drag() {
  * ? Ow = Order Window
 */
 const Ow = (props) => {
-    const [orderWindowType, setOrderWindowType] = useState("buy");
+    const ltp = useSelector(state => state.ltp);
+    var wD = props.data, // Window Data
+    i = wD.instrument, // Instrument Name
+    t = wD.type, // Transaction Type
+    e = wD.exchange, // Exchange Name
+    l = wD.ltp;
+    const [orderWindowType, setOrderWindowType] = useState(t);
     function tog() {
         var tol = document.getElementById("windType").checked;
         console.log(tol);
@@ -66,7 +76,6 @@ const Ow = (props) => {
             class: "bg-danger"
         };
     useEffect(() => {
-        drag();
         var x = document.getElementById("formElem").elements;
         var val = {
             exchange: x.exchange.value,
@@ -74,12 +83,6 @@ const Ow = (props) => {
             orderType: x.orderType.value,
             variety: x.variety.value,
         }
-        // console.log(newState)
-        // for (var ra in ele) {
-        //     ele[ra].onchange = function() {
-        //         console.log('val');
-        //     }
-        // }
     })
     return (
         <div className={"card ordWindow " + windClass.transType} style={{ width: "610px", position: "absolute", zIndex: 1000 }}>
@@ -89,31 +92,31 @@ const Ow = (props) => {
                         <div className="col-9">
                             <div className="instrument" style={{ fontSize: "smaller", fontWeight: "bolder", marginLeft: "2px" }}>
                                 <span className="transaction-type text-capitalize">{windClass.transType}</span>
-                                <span className="ms-1 tradingsymbol">SBIN</span>
+                                <span className="ms-1 tradingsymbol">{i}</span>
                             &nbsp;x
-                            <span className="ms-1 qty">122</span>
+                            <span className="ms-1 qty">{1}</span>
                             </div>
                         </div>
                         <div className="col-3">
                             <div className="form-check form-switch float-end">
-                                <input className="form-check-input" onClick={() => tog()} type="checkbox" id="windType" style={{ backgroundColor: "#ffffff5c" }} />
+                                <input className="form-check-input" onClick={() => tog()}  defaultChecked={(props.data.type == "sell" ? true : false)} type="checkbox" id="windType" style={{ backgroundColor: "#ffffff5c" }} />
                             </div>
 
                         </div>
                         <div className="col-12 fw-light" style={{ fontSize: " small" }}>
                             <div className="form-check d-inline-block">
-                                <input className="form-check-input my-auto" defaultChecked type="radio" value="bse" name="exchange" id="bseRadio" />
-                                <label className="form-check-label" htmlFor="bseRadio"> BSE: <span className="last-price">₹395.80</span> </label>
+                                <input className="form-check-input my-auto" defaultChecked={(e == "BSE" ? true : false)} type="radio" value="bse" name="exchange" id="bseRadio" />
+                                <label className="form-check-label" htmlFor="bseRadio"> BSE: <span className="last-price">{ Object.keys(ltp).length != 0 ? ltp.data[i] : ""}</span> </label>
                             </div>
                             <div className="form-check d-inline-block ms-3">
-                                <input className="form-check-input my-auto" type="radio" value="nse" name="exchange" id="nseRadio" />
-                                <label className="form-check-label" htmlFor="nseRadio"> NSE: <span className="last-price">₹395.65</span> </label>
+                                <input className="form-check-input my-auto" defaultChecked={(e == "NSE" ? true : false)} type="radio" value="nse" name="exchange" id="nseRadio" />
+                                <label className="form-check-label" htmlFor="nseRadio"> NSE: <span className="last-price">₹{(Object.keys(ltp).length != 0 ? ltp.data[i] : "")}</span> </label>
                             </div>
 
                         </div>
                     </div>
                 </div>
-                <Body data={windClass} />
+                <Body data={windClass} /> {/* Ovalue = Order Value */}
                 <div className="card-footer">
 
                 </div>

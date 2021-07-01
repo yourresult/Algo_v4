@@ -311,5 +311,5 @@ table .text-label.order-status {
   color: #fff;
 }
 .ordWindow {
-  display: none;
+  /* display: none; */
 }
